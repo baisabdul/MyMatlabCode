@@ -1,0 +1,23 @@
+
+close all;
+%period
+
+m1 = [ 0 0 0 1 1 1 1 1 1 1 1 1 0 0  0 ];
+f1 = [-10 -5 -4 -4 -3 -2 -1 0 1 2 3 4 4 5 10];
+
+
+m1 = [ 0 0 0 1 1 1 1 1 1 1 1 1 0 0  0 ];
+f1 = [-10 -5 -4 -3 -2 -1 0 0 1 2 3 4 4 5 10];
+
+
+figure(1)
+subplot(211);
+
+plot(f1,m1,'LineWidth',2);
+xlabel('f (Hz)','FontSize',14);
+ylabel('x_1(t)','FontSize',14);
+set(gca,'FontSize',14,'LineWidth',2);
+grid on
+ylim([-0.2 1.2])
+
+

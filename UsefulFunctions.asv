@@ -1,0 +1,46 @@
+
+%Read a wavfile
+%fs is the sampling frequenc
+%nbits represent the number of bits to store one sample
+%opts stores information about the data...like the number of channels
+[y, fs, nbits, opts] = wavread('loop.wav');
+
+%y has two channels
+
+%play both channels
+sound(y,fs)
+%play left channel
+sound(y(:,1),fs)
+%play right channel
+sound(y(:,2),fs)
+
+
+%This sample data contains around 7 seconds. If we want to store the first
+%first 5 seconds, we can do it as
+%Here we also discard one of the channels
+y = y(1:5*fs,1);
+t = 0:1/fs:5;
+%Generate a carrier
+fc = 90000;
+c = cos(2*pi*fc*t(1:end-1));
+
+%DSB amplitude modulation
+data = y .* c';
+
+%frequency in Hz
+k=0:1:length(data)-1; 	
+f=k*fs/length(data); % convert it to Hz
+
+
+figure(1)
+subplot(211)
+Ay = abs(fft(y))/length(y);
+plot(f,fftshift(Ay));
+
+subplot(212)
+MS = abs(fft(data)) / length(data);
+plot(f,fftshift(MS));
+
+wavplay(data,fs)
+
+

@@ -1,0 +1,30 @@
+close all
+t=-0.001:0.00001:0.0001;
+tt =[t-2*0.001 t t+2*0.001];
+fc=10*1000;
+m = 40*t;
+mm = [m m m];
+kp = 10;
+
+theta = 2*pi*fc + kp*mm;
+x 
+
+
+
+
+figure(1)
+subplot(211), plot(tt,mm,'LineWidth',2);title('m(t)','FontSize',12);
+subplot(212), plot(tt,,'LineWidth',2);title('[4+m(t)]cos(w_c t)','FontSize',12);
+
+figure(2)
+subplot(211), plot(tt,mm,'LineWidth',2);title('m(t)','FontSize',12);
+subplot(212), plot(tt,(mm+2) .* cc,'LineWidth',2);title('[2+m(t)]cos(w_c t)','FontSize',12);
+
+figure(3)
+subplot(211), plot(tt,mm,'LineWidth',2);title('m(t)','FontSize',12);
+subplot(212), plot(tt,(mm+1) .* cc,'LineWidth',2);title('[1+m(t)]cos(w_c t)','FontSize',12);
+
+
+figure(4)
+subplot(211), plot(tt,mm,'LineWidth',2);title('m(t)','FontSize',12);
+subplot(212), plot(tt,(mm+0) .* cc,'LineWidth',2);title('[0+m(t)]cos(w_c t)','FontSize',12);

@@ -1,0 +1,47 @@
+close all;
+
+T0 = pi;
+f0 = 1/T0;
+w0 = 2*pi*f0;
+
+t = 0:0.0001:pi;
+g0 = exp(-t/2);
+
+a0 = 0.504;
+
+N = 10;
+n = 1:N;
+an = (0.504 * 2) ./ (1 + 16 * n .* n);
+bn = (0.504 * 8 * n) ./ (1 + 16 * n .* n);
+cn = sqrt ( an .* an + bn .* bn);
+tn = atan2(-1 * bn, an);
+
+
+cn = [a0 cn];
+tn = [0 tn];
+n = [0 n];
+
+
+
+
+
+gt = zeros(size(t));
+
+gt = gt + a0;
+
+for k = 1:N
+    gt = gt + an(k) * cos (2 * k * t) + bn(k) * sin (2* k * t);
+end
+
+figure(1)
+subplot(211);
+plot(t,g0);
+subplot(212);
+plot(t,gt);
+
+
+figure(2)
+stem(n,cn);
+
+figure(3)
+stem(n,tn);

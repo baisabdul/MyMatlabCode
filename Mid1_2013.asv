@@ -1,0 +1,39 @@
+
+close all;
+%period
+
+m = [ 0 4 8 6 0 5 0 0 0 6 8 4 0 ];
+ph = [ 0 3 0 -1 2 0 0 0 -2 1  0 3 0 ];
+f = 100*[-6 -5 -4 -3 -2 -1 0 1 2 3 4 5 6];
+
+
+figure(1)
+subplot(211);
+xlabel('f','FontSize',14);
+ylabel('|Dn|');
+stem(f,m);
+subplot(212);
+
+plot(f,ph);
+xlabel('f','FontSize',14);
+ylabel('|Dn|');
+grid on
+
+
+
+
+%Convert to compact form
+cn = sqrt ( an .* an + bn .* bn);
+%angle
+tn = atan2(-1 * bn, an);
+%Add the zero frequency component
+cn = [a0 cn];
+tn = [0 tn];
+n = [0 n];
+
+
+figure(2)
+subplot(211)
+stem(n,cn);
+subplot(212)
+stem(n,tn);

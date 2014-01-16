@@ -1,0 +1,37 @@
+
+f0 = 0;
+f1 = 8;
+f2 = 20;
+f2 = 20;
+
+A0 = 6;
+A1 = 24;
+A2 = 10;
+
+phi0 = 0;
+phi1 = 3*pi/2;
+phi2 = -1*pi;
+
+
+t = -0.5:1/1000:0.5;
+
+x0 = 6*cos(2*pi*f0*t+ phi0);
+x1 = 24*cos(2*pi*f1*t+ phi1);
+x2 = 10*cos(2*pi*f2*t+ phi2);
+
+x2 = 10*cos(2*pi*f2*t+ phi2);
+x = x0 + x1 + x2;
+
+
+subplot(411), plot(t, x0);
+subplot(412), plot(t, x1);
+subplot(413), plot(t, x2);
+subplot(414), plot(t, x);
+
+
+
+
+
+
+
+

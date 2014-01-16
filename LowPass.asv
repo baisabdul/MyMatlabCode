@@ -1,0 +1,42 @@
+
+%Filter order
+FOrder = 4;
+%Cutoff frequency
+Fc = 800;
+%Sampling frequency
+Fs = 8000;
+%Number of point for filter display
+l = 512;
+
+%Design a low pass butterworth filter with the given cutoff
+[bLP,aLP] = butter(FOrder,2*pi*Fc,'low','s');
+%Design a digital filter based on the analog prototype
+[bbLP,aaLP]=bilinear(bLP,aLP,Fs);              
+%Display frequency response of the filter
+freqz(bbLP, aaLP, l, Fs);
+%Restrict axis
+axis([0 4000 -60 1]); 
+
+
+figure(2)
+%Two seconds of time.
+%Sampling rate is Fs
+t=0:1/Fs:2;
+x = cos(2*pi*1200*t) + 2*cos(2*pi*200*t);
+
+k=0:1:length(x)-1; 	
+f=k*Fs/length(x); % convert it to Hz
+
+Ax=abs(fftshift(fft(x)))/length(x);
+subplot(2,1,1);
+plot(f-Fs/2,Ax);
+y = filter(bbLP,aaLP,x);
+Ay=abs(fftshift(fft(y)))/length(y);
+subplot(2,1,2);
+plot(f-Fs/2,Ay);
+
+
+
+
+
+

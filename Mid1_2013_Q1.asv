@@ -1,0 +1,16 @@
+%If scaled and shifted sinusoids of the same frequency are added together
+%the result is another sinusoid of the same frequency.
+
+
+f = 2;
+phi = 0;
+t = -1:1/(20*f):1;
+x1 = 4 * cos(2*pi*f*t + phi);
+
+plot(t,x1,'r','LineWidth',2);
+xlabel('t (sec)','FontSize',14);
+ylabel('x(t)','FontSize',14);
+title('x(t) = Acos(2\pi ft + \phi\
+
+
+
